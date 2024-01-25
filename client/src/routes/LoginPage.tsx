@@ -20,7 +20,7 @@ function LoginPage() {
       </div>
       <div className="wrapper__signin">
         <h2 className="smaller-title">Log in to your account</h2>
-        <div className="signup__socialmedia">
+        {/* <div className="signup__socialmedia">
         <div className="signup__item">
           <img src="/google.png" alt="googlelogo" className="google__logo" />
           <p>Sign in with Google</p>
@@ -30,7 +30,7 @@ function LoginPage() {
           <p>Sign in with Facebook</p>
         </div>
         </div>
-        <h3 className="or gray">- or -</h3>
+        <h3 className="or gray">- or -</h3> */}
           <LoginForm />
         <div className="bottomthing__startpage">
           <h3 className="bottomthing__startpage-left">Don't have an account?</h3>

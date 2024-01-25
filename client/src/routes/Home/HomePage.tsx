@@ -14,12 +14,12 @@ import {
 import { Context } from "../../main";
 import Modal from "../../components/Modal";
 import { getEightMonths } from "../../calendarLogic/getEightMonths";
-import { calculateCycleData } from "../../cycleLogic/calculateCycleData";
-import { getCurrentCycle } from "../../cycleLogic/getCurrentCycle";
 import { countPhases } from "../../cycleLogic/countPhases";
-import { toJS } from "mobx";
+import {
+  getDatesBetween,
+  getDatesBetweenExceptLast,
+} from "../../calendarLogic/getDatesBetween";
 import { deepEqual } from "../../cycleLogic/deepEqual";
-import { getDatesBetween, getDatesBetweenExceptLast } from "../../calendarLogic/getDatesBetween";
 
 const englishMonthNames = [
   "January",
@@ -51,26 +51,10 @@ function HomePage() {
     }
   }, []);
 
-  useEffect(() => {
-    if (store.user.periodDates) {
-      const { cycleArray, cycleLengths } = calculateCycleData(
-        store.user.periodDates
-      );
-      const newCurrCycle = getCurrentCycle(cycleArray, today);
-
-      // Only set state if it has actually changed to avoid infinite loops
-      if (!deepEqual(newCurrCycle, currCycle)) {
-        setCurrCycle(newCurrCycle);
-      }
-    }
-  }, [store.user.periodDates, today]);
-
   const [pickedDate, setPickedDate] = useState(today[0].date.c.day);
   const [pickedMonth, setPickedMonth] = useState(
     englishMonthNames[today[0].date.c.month - 1]
   );
-
-  const [currCycle, setCurrCycle] = useState<any>();
 
   const [phases, setPhases] = useState<any>();
   const [menstrualPhase, setMenstrualPhase] = useState<any>(["", "", "", ""]);
@@ -91,11 +75,6 @@ function HomePage() {
   };
   //0 - 1st date, 1 - 1st month, 2 - 2nd date, 3 - 2nd month
 
-  const getCycle = async () => {
-    const periodLength = await store.user.periodLength.average;
-    setPhases(countPhases(currCycle, periodLength));
-  };
-
   useEffect(() => {
     if (phases) {
       makePhaseArray(phases.menstrual, setMenstrualPhase);
@@ -105,14 +84,12 @@ function HomePage() {
     }
   }, [phases]);
 
-  useEffect(() => {
-    getCycle();
-  }, [currCycle]);
-
   const nextPredictedPeriod = () => {
     //get the most recent period from period dates
-    if (store.user.periodDates && store.user.periodDates.length > 0) {  // [[], [], []]
-      const latestPeriod = store.user.periodDates[store.user.periodDates.length - 1]; //[];
+    if (store.user.periodDates && store.user.periodDates.length > 0) {
+      // [[], [], []]
+      const latestPeriod =
+        store.user.periodDates[store.user.periodDates.length - 1]; //[];
       if (latestPeriod && latestPeriod.length > 0) {
         const firstDateOfLatestPeriod = new Date(latestPeriod[0]); //Date
         //get average cycle length
@@ -128,8 +105,11 @@ function HomePage() {
             const periodLength = store.user.periodLength.average;
             const predictedEnd = new Date(predictedStart);
             predictedEnd.setDate(predictedStart.getDate() + periodLength);
-            const predictedPeriodDates = getDatesBetween(predictedStart, predictedEnd) 
-            return predictedPeriodDates
+            const predictedPeriodDates = getDatesBetween(
+              predictedStart,
+              predictedEnd
+            );
+            return predictedPeriodDates;
           }
         }
       }
@@ -137,6 +117,29 @@ function HomePage() {
   };
 
   const predictedPeriodDates = nextPredictedPeriod();
+
+  const countTheCurrentCycle = () => {
+    if (predictedPeriodDates) {
+      const endDate = predictedPeriodDates[0];
+      if (store.user.periodDates && store.user.periodDates.length > 0) {
+        const latestPeriod =
+          store.user.periodDates[store.user.periodDates.length - 1];
+        const startDate = new Date(latestPeriod[0]);
+        const cycle = getDatesBetweenExceptLast(startDate, endDate);
+        if (store.user.periodLength && store.user.periodLength.average)
+          return countPhases(cycle, store.user.periodLength.average);
+      }
+    }
+  };
+  useEffect(() => {
+    const cyclePhases = countTheCurrentCycle();
+
+    if (!deepEqual(cyclePhases, phases)) {
+      setPhases(cyclePhases);
+    }
+  }, [predictedPeriodDates]);
+
+  console.log(phases);
 
   if (store.isAuth) {
     return (

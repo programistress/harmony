@@ -106,7 +106,6 @@ function ScrollCalendar({
   };
 
   const predictedDateTimeObjects = colorPredictedPeriodDates();
-  console.log(colorPredictedPeriodDates());
 
   if (eightMonths) {
     return (

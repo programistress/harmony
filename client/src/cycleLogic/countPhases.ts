@@ -1,12 +1,12 @@
 //get a current cycle array
 //and then just structure it by days?
 
-import { datesArrOfArr } from "../models/cycle/types";
 
-export const countPhases = (cycle:datesArrOfArr, periodLength: number) => {
+export const countPhases = (cycle:Date[], periodLength: number) => {
+  console.log(cycle)
   if (cycle) {
     const follicularLength = Math.round(cycle.length * 0.32);
-    const ovulationLength = Math.round(cycle.length * 0.16);
+    const ovulationLength = Math.round(cycle.length * 0.1);
 
     const menstrual = cycle.slice(0, periodLength);
     const follicular = cycle.slice(

@@ -15,7 +15,7 @@ function RegisterPage() {
       </div>
       <div className="wrapper__signin">
         <h2 className="smaller-title">Create an account</h2>
-        <div className="signup__socialmedia">
+        {/* <div className="signup__socialmedia">
         <div className="signup__item">
           <img src="/google.png" alt="googlelogo" className="google__logo" />
           <p>Sign up with Google</p>
@@ -25,7 +25,7 @@ function RegisterPage() {
           <p>Sign up with Facebook</p>
         </div>
         </div>
-        <h3 className="or gray">- or -</h3>
+        <h3 className="or gray">- or -</h3> */}
           <RegisterForm />
         <div className="bottomthing__startpage">
           <h3 className="bottomthing__startpage-left">Already have an account?</h3>

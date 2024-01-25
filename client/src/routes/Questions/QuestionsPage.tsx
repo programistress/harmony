@@ -30,6 +30,10 @@ function QuestionsPage() {
     store.updateUserCycleLength(cycleLengthForDb, store.user.id)
     store.updateUserPeriodDates(getDatesBetween(startDate, endDate), store.user.id)
   }
+
+  if (store.isLoading) {
+    return <div className="container__centered title">Loading...</div>
+  }
   
   if (store.isAuth) {
     return (
