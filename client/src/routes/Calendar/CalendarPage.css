@@ -1,0 +1,69 @@
+.month__div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  justify-content: start;
+}
+
+.week_line {
+  display: flex;
+  gap: 3px;
+  justify-content: end;
+}
+
+.week_line:last-child {
+  justify-content: flex-start; /* Justify the last week to the start */
+}
+
+.title__calendar {
+  margin: 30px;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(4, 258px);
+  gap: 40px;
+}
+
+.day__names {
+  display: flex;
+  color: var(--pink);
+  text-transform: lowercase;
+  font-size: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+}
+
+.calendar__day {
+  width: 32px;
+  height: 32px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 32px; 
+  transition: 0.3s;
+}
+
+.calendar__day-today {
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  border: 2px solid var(--pink);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 32px; 
+  transition: 0.3s;
+}
+
+.day__names li {
+  width: 34px;
+  text-align: center;
+}
+
+.month_title {
+  color: var(--pink);
+  font-size: 20px;
+  margin-left: 8px;
+}
+

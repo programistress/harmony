@@ -1,0 +1,68 @@
+.custom-datepicker__selected {
+  background-color: var(--pink);
+  color: var(--white);
+}
+
+.date_picker {
+  background-color: var(--white);
+  border: 2px solid var(--pink);
+  border-radius: 8px;
+  padding: 5px 7px 2px;
+  transition: 0.3s;
+}
+
+.date_picker:hover {
+  border-color: var(--light-pink);
+}
+
+.daterange {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding: 4px 0 10px;
+}
+
+.daterange__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.daterange__item label {
+  font-size: 14px;
+  color: var(--gray);
+}
+
+.numberpicker {
+  display: flex;
+  color: var(--pink);
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0;
+}
+
+.numberpicker button {
+  font-size: 26px;
+}
+
+.center {
+  text-align: center;
+}
+
+.question__section {
+  margin-bottom: 8px;
+}
+
+.btn__questionspage {
+  background-color: var(--pink);
+  color: var(--white);
+  width: 340px;
+  height: 44px;
+  transition: 0.3s;
+  padding: 0 15px;
+  font-size: 16px;
+  border-radius: 18px;
+}
+
+.btn__questionspage:hover {
+  background-color: var(--light-pink);
+}

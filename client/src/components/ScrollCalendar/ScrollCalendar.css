@@ -1,0 +1,117 @@
+
+.calendar__allitems {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  width: 355px;
+  height: 100px;
+}
+
+.scrollcalendar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  padding-bottom: 20px;
+}
+
+.calendar__allitems::-webkit-scrollbar {
+ display: none;
+}
+
+.scrollcalendar button {
+  font-size: 40px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.scrollcalendar button:hover {
+  color: var(--light-pink);
+}
+
+.calendar__item {
+  border: 2px solid var(--pink);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px; 
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.today {
+  bottom: -10px;
+  position: relative;
+}
+
+.calendar__item-pink {
+  border: 2px solid var(--pink);
+  background-color: var(--pink);
+  color: white;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px; 
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.calendar__item-pred {
+  border: 2px dashed var(--pink);
+  background-color: white;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px; 
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.calitem__wrapper {
+  height: 46px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar__item:hover {
+  border: 2px solid var(--light-pink);
+}
+
+.calendar__item-today:hover {
+  border: 2px solid var(--light-pink);
+}
+
+.hidden {
+  display: none;
+}
+
+.showToday {
+  bottom: -9px;
+  position: relative;
+  z-index: 20;
+  font-size: 14px;
+  color: var(--pink);
+}
+
+.singlemonth__div {
+  display: flex;
+  position: relative;
+  gap: 5px;
+}
+
+.singlemonth__name {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  color: var(--pink);
+  font-weight: bold;
+  font-size: 20px;
+}
+
