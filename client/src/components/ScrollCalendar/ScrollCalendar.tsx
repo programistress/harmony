@@ -30,7 +30,7 @@ const englishMonthNames = [
 type Props = {
   setPickedDate: Dispatch<SetStateAction<any>>;
   setPickedMonth: Dispatch<SetStateAction<any>>;
-  predictedPeriodDates: Date[];
+  predictedPeriodDates: Date[] | undefined;
 };
 
 function ScrollCalendar({

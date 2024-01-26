@@ -19,7 +19,7 @@ function LoginPage() {
       </h1>
       </div>
       <div className="wrapper__signin">
-        <h2 className="smaller-title">Log in to your account</h2>
+        <h2 className="smaller__title">Log in to your account</h2>
         {/* <div className="signup__socialmedia">
         <div className="signup__item">
           <img src="/google.png" alt="googlelogo" className="google__logo" />

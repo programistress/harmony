@@ -1,30 +1,54 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../main";
+import { observer } from "mobx-react-lite";
+
+function isValidEmail(email: string) {
+  // Simple email validation regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
 
 function RegisterForm() {
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [errorMessageEmail, setErrorMessageEmail] = useState("");
+  const [errorMessagePass, setErrorMessagePass] = useState("");
+  const [clickable, setClickable] = useState(true);
 
   const { store } = useContext(Context);
 
-  const navigate = useNavigate()
-
-  const handleRegistration = async () => {
-    try {
-      await store.registration(email, password, username);
-      // Navigate to the "/questions" route
-      navigate("/questions");
-    } catch (error) {
-      // Handle errors if necessary
-      console.error("Registration failed:", error);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (password.length < 4 || password.length > 32) {
+      setErrorMessagePass("Password must be between 4 and 32 characters");
+      setClickable(false);
+    } else {
+      setErrorMessagePass("");
+      setClickable(true);
     }
+  }, [password]);
+
+  useEffect(() => {
+    if (!isValidEmail(email)) {
+      setErrorMessageEmail("Please provide valid email address");
+      setClickable(false);
+    } else {
+      setErrorMessageEmail("");
+      setClickable(true);
+    }
+  }, [email]);
+  const handleRegistration = async () => {
+    await store.registration(email, password, username);
+    navigate("/questions");
   };
 
   return (
     <form className="input__group">
-       <input
+     {errorMessageEmail == '' ?  <p></p> : <p className="error-message">{errorMessageEmail}</p>}
+      {errorMessagePass == '' ?<p></p> :  <p className="error-message">{errorMessagePass}</p> }
+      <input
         className="input"
         type="text"
         placeholder="Username"
@@ -49,10 +73,12 @@ function RegisterForm() {
         required
       />
       <Link to={"/questions"}>
-      <button className="btn__startpage" onClick={handleRegistration}>Register</button>
+        <button className="btn__startpage" onClick={handleRegistration} disabled={!clickable}>
+          Register
+        </button>
       </Link>
     </form>
   );
 }
 
-export default RegisterForm;
+export default observer(RegisterForm)

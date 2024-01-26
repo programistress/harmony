@@ -6,6 +6,7 @@ import QuestionsPage from './routes/Questions/QuestionsPage'
 import CalendarPage from './routes/Calendar/CalendarPage'
 import { observer } from 'mobx-react-lite'
 import ArticlesPage from './routes/Articles/ArticlesPage'
+import ArticleDetails from './routes/Articles/ArticleDetails'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/questions" element={<QuestionsPage />} />
       <Route path="/calendar" element={<CalendarPage />} />
       <Route path="/articles" element={<ArticlesPage />} />
+      <Route path="/articles/:id" element={<ArticleDetails />} />
         </Routes>
       </BrowserRouter>
   )

@@ -133,14 +133,11 @@ function HomePage() {
   };
   useEffect(() => {
     const cyclePhases = countTheCurrentCycle();
-
     if (!deepEqual(cyclePhases, phases)) {
       setPhases(cyclePhases);
     }
-  }, [predictedPeriodDates]);
-
-  console.log(phases);
-
+  }, [predictedPeriodDates, store.user.periodDates]);
+  
   if (store.isAuth) {
     return (
       <div className="container">
@@ -187,7 +184,6 @@ function HomePage() {
                   to physical discomfort.
                 </p>
               </div>
-              <a className="phase__link">recommendations &gt;</a>
             </div>
             <div className="menstrual__phase">
               <div className="phase__section">
@@ -205,7 +201,6 @@ function HomePage() {
                   outlook and increased vitality.
                 </p>
               </div>
-              <a className="phase__link">recommendations &gt;</a>
             </div>
             <div className="menstrual__phase">
               <div className="phase__section">
@@ -222,7 +217,6 @@ function HomePage() {
                   assertiveness and a positive, radiant mood.
                 </p>
               </div>
-              <a className="phase__link">recommendations &gt;</a>
             </div>
             <div className="menstrual__phase">
               <div className="phase__section">
@@ -240,7 +234,6 @@ function HomePage() {
                   ranging from reflective to more introspective states.
                 </p>
               </div>
-              <a className="phase__link">recommendations &gt;</a>
             </div>
           </div>
         </div>

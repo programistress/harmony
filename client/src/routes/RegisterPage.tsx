@@ -14,7 +14,7 @@ function RegisterPage() {
       </h1>
       </div>
       <div className="wrapper__signin">
-        <h2 className="smaller-title">Create an account</h2>
+        <h2 className="smaller__title">Create an account</h2>
         {/* <div className="signup__socialmedia">
         <div className="signup__item">
           <img src="/google.png" alt="googlelogo" className="google__logo" />

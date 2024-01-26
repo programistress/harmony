@@ -45,6 +45,18 @@
   transition: 0.3s;
 }
 
+.calendar__day-period {
+  width: 32px;
+  height: 32px;
+  border: 1px solid transparent;
+  background-color: var(--pink);
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 32px; 
+  transition: 0.3s;
+}
+
 .calendar__day-today {
   width: 32px;
   height: 32px;

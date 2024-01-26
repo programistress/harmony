@@ -79,7 +79,7 @@ function QuestionsPage() {
       </div>
     );
   } else {
-    return <h1>not authorized</h1>;
+    return <div className="container__centered title">Loading...</div>;
   }
 }
 

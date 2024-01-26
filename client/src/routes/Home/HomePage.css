@@ -227,3 +227,18 @@
 .none {
   display: none;
 }
+
+.pointerevents-none {
+  pointer-events: none;
+}
+
+.warning {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.error-message {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 5px;
+}
