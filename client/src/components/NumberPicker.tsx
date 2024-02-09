@@ -1,4 +1,5 @@
-import React from "react";
+import { faCaretRight, faCaretLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function NumberPicker({ number, setNumber, range }) {
   const incrementNumber = () => {
@@ -11,8 +12,11 @@ function NumberPicker({ number, setNumber, range }) {
 
   return (
     <div className="numberpicker">
-      <button className="pink" onClick={decrementNumber}>
-        &#9666;
+      <button className="pink numberpicker__btn" onClick={decrementNumber}>
+      <FontAwesomeIcon icon={faCaretLeft} style={{
+                width: 20,
+                height: 20,
+              }}/>
       </button>
       <p className="center">
         {number === range.max
@@ -21,8 +25,11 @@ function NumberPicker({ number, setNumber, range }) {
           ? number + " or less"
           : number}
       </p>
-      <button className="pink" onClick={incrementNumber}>
-        &#9656;
+      <button className="pink numberpicker__btn" onClick={incrementNumber}>
+      <FontAwesomeIcon icon={faCaretRight} style={{
+                width: 20,
+                height: 20,
+              }}/>
       </button>
     </div>
   );

@@ -3,14 +3,15 @@ import React, {
   SetStateAction,
   useContext,
   useEffect,
-  useRef,
-  useState,
+  useRef
 } from "react";
 import "./ScrollCalendar.css";
 import { getEightMonths } from "../../calendarLogic/getEightMonths";
 import { Context } from "../../main";
 import { observer } from "mobx-react-lite";
 import { DateTime } from "luxon";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretRight, faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 
 const englishMonthNames = [
   "January",
@@ -47,7 +48,7 @@ function ScrollCalendar({
     if (todayRef.current) {
       todayRef.current.scrollIntoView({
         behavior: "smooth",
-        block: "center",
+        block: "nearest",
         inline: "center",
       });
     }
@@ -111,7 +112,10 @@ function ScrollCalendar({
     return (
       <div className="scrollcalendar">
         <button className="pink" onClick={() => handleScroll("left")}>
-          &#9666;
+        <FontAwesomeIcon icon={faCaretLeft} style={{
+                width: 30,
+                height: 30,
+              }}/>
         </button>
         <div className="calendar__allitems" ref={containerRef}>
           {eightMonths.map((monthGroup, monthIndex) => (
@@ -183,7 +187,10 @@ function ScrollCalendar({
           ))}
         </div>
         <button className="pink" onClick={() => handleScroll("right")}>
-          &#9656;
+        <FontAwesomeIcon icon={faCaretRight} style={{
+                width: 30,
+                height: 30,
+              }}/>
         </button>
       </div>
     );

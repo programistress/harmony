@@ -1,12 +1,7 @@
 import { Link } from "react-router-dom";
 import LoginForm from "../components/LoginForm";
-import { useContext } from "react";
-import { Context } from "../main";
-
 
 function LoginPage() {
-
-  const { store } = useContext(Context);
 
   return (
     <div className="container__row">

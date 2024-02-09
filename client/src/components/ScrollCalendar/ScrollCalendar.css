@@ -25,6 +25,8 @@
   font-size: 40px;
   transition: 0.3s;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
 }
 
 .scrollcalendar button:hover {
@@ -113,5 +115,33 @@
   color: var(--pink);
   font-weight: bold;
   font-size: 20px;
+}
+
+@media screen and (max-width: 470px) {
+  .calitem__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .calendar__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    line-height: 40px; 
+  }
+
+  .calendar__item-pred {
+    width: 40px;
+    height: 40px;
+    line-height: 40px; 
+  }
+
+  .calendar__allitems {
+    width: 342px;
+  }
 }
 

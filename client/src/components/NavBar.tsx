@@ -1,9 +1,13 @@
 import { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../main";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendarDays, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { useMediaQuery } from 'react-responsive';
 
 function NavBar() {
   const { store } = useContext(Context);
+  const isMobile = useMediaQuery({ maxWidth: 470 });
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -25,12 +29,23 @@ function NavBar() {
       </Link>
       <ul className="navbar__right">
         <Link to={"/calendar"}>
-          <li>Calendar</li>
+        {isMobile ? (
+            <li><FontAwesomeIcon icon={faCalendarDays} style={{
+              width: 20,
+              height: 20,
+            }}/></li>
+          ) : (
+            <li>Calendar</li>
+          )}
         </Link>
-        <Link to={"/articles"}>
-          <li>Articles</li>
-        </Link>
-        <li onClick={logout}>Log Out</li>
+        {isMobile ? (
+          <li onClick={logout}><FontAwesomeIcon icon={faRightFromBracket} style={{
+            width: 20,
+            height: 20,
+          }} /></li>
+        ): (
+           <li onClick={logout}>Log Out</li>
+        )}
       </ul>
     </nav>
   );

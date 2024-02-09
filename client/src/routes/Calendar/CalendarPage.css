@@ -79,3 +79,26 @@
   margin-left: 8px;
 }
 
+@media screen and (max-width: 1200px) {
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(3 , 258px);
+    gap: 40px;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(2, 258px);
+    gap: 40px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(1, 258px);
+    gap: 40px;
+  }
+}

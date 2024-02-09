@@ -81,4 +81,4 @@ function RegisterForm() {
   );
 }
 
-export default observer(RegisterForm)
+export default RegisterForm

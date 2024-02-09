@@ -80,6 +80,74 @@ ul {
   align-items: center;
 }
 
+@media screen and (max-width: 1440px) {
+  .container {
+    width: 1000px;
+  }
+
+  .container__row {
+    width: 1000px;
+  }
+
+  .container__centered {
+    width: 1000px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    width: 800px;
+  }
+
+  .container__row {
+    width: 650px;
+  }
+
+  .container__centered {
+    width: 800px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    width: 650px;
+  }
+
+  .container__centered {
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 1330px) {
+  .container__row {
+    gap: 50px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .container__row {
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 685px) {
+  .container {
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .container {
+    width: 500px;
+  }
+
+  .container__centered {
+    width: 500px;
+  }
+}
+
+
+
 .emoji {
   width: 40px;
   height: 40px;
@@ -235,4 +303,35 @@ ul {
   font-weight: normal;
   text-align: center;
   height: 25px;
+}
+
+@media screen and (max-width: 650px) {
+  .title {
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .title {
+    width: 400px;
+  }
+
+  .container {
+    width: 400px;
+  }
+
+  .container__centered {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .container__row {
+    flex-direction: column;
+  }
+
+  .greeting {
+    text-align: center;
+    width: 490px;
+  }
 }
