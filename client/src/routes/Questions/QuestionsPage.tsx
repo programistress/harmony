@@ -7,7 +7,6 @@ import { Context } from "../../main";
 import { observer } from "mobx-react-lite";
 import { getDatesBetween } from "../../calendarLogic/getDatesBetween";
 
-
 function QuestionsPage() {
   const { store } = useContext(Context);
 
@@ -84,4 +83,4 @@ function QuestionsPage() {
   }
 }
 
-export default observer(QuestionsPage);
+export default observer(QuestionsPage)

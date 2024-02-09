@@ -8,9 +8,9 @@ import { DateTime } from "luxon";
 import { observer } from "mobx-react-lite";
 
 function CalendarPage() {
+  const { store } = useContext(Context);
+  
   const colorPeriodDates = () => {
-    const { store } = useContext(Context);
-
     if (store.user.periodDates && store.user.periodDates.length > 0) {
       return store.user.periodDates.map((row) =>
         row.map((dateString) => {

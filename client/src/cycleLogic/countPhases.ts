@@ -1,7 +1,6 @@
 //get a current cycle array
 //and then just structure it by days?
 
-
 export const countPhases = (cycle:Date[], periodLength: number) => {
   if (cycle) {
     const follicularLength = Math.round(cycle.length * 0.32);

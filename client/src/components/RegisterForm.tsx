@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../main";
-import { observer } from "mobx-react-lite";
 
 function isValidEmail(email: string) {
   // Simple email validation regex
