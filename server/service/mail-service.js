@@ -1,27 +1,39 @@
 const nodemailer = require("nodemailer");
+const { google } = require("googleapis");
+const SMTPTransport = require("nodemailer-smtp-transport");
 
 class MailService {
   constructor() {
-    this.transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      secure: false, // Set to true for secure (TLS) connection
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASSWORD,
-      },
-      tls: { 
-        rejectUnauthorized: false, 
-        minVersion: "TLSv1", 
-        ciphers: "SSLv3" 
-      },
-      connectionTimeout: 10000,
-      socketTimeout: 10000,
+    const OAuth2 = google.auth.OAuth2;
+    const oauth2Client = new OAuth2(
+      process.env.OAUTH_CLIENT_ID,
+      process.env.OAUTH_CLIENT_SECRET,
+      "https://developers.google.com/oauthplayground" // Redirect URL for testing
+    );
+
+    oauth2Client.setCredentials({
+      refresh_token: process.env.OAUTH_REFRESH_TOKEN
     });
+
+    const accessToken = oauth2Client.getAccessToken();
+
+    this.transporter = nodemailer.createTransport(
+      new SMTPTransport({
+        service: "gmail",
+        auth: {
+          type: "OAuth2",
+          user: process.env.SMTP_USER,
+          clientId: process.env.OAUTH_CLIENT_ID,
+          clientSecret: process.env.OAUTH_CLIENT_SECRET,
+          refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+          accessToken: accessToken
+        }
+      })
+    );
   }
 
   async sendActivationMail(to, link) {
-    //email to which we send the letter and a link that will be sent
+    // Email to which we send the letter and a link that will be sent
     await this.transporter.sendMail({
       from: process.env.SMTP_USER,
       to,
@@ -29,8 +41,8 @@ class MailService {
       text: "",
       html: `
       <div>
-      <h1>For verifying your email please click this link:</h1>
-      <a href='${link}'>${link}</a>
+        <h1>For verifying your email please click this link:</h1>
+        <a href='${link}'>${link}</a>
       </div>
       `,
     });

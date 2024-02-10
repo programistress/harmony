@@ -44,6 +44,11 @@ function LoginForm() {
     navigate("/");
   };
 
+  const handleLoginPlaceholder = () => {
+    store.login(email, password);
+    navigate("/");
+  };
+
   return (
     <form className="input__group">
       {errorMessageEmail == '' ?  <p></p> : <p className="error-message">{errorMessageEmail}</p>}
@@ -71,6 +76,12 @@ function LoginForm() {
         onClick={handleLogin}
       >
         Log In
+      </button>
+      <button
+        className="btn__startpage-light"
+        onClick={handleLoginPlaceholder}
+      >
+        See The Functionality
       </button>
     </form>
   );

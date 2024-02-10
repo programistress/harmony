@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../main";
 
+
 function isValidEmail(email: string) {
   // Simple email validation regex
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -23,9 +24,10 @@ function RegisterForm() {
     if (password.length < 4 || password.length > 32) {
       setErrorMessagePass("Password must be between 4 and 32 characters");
       setClickable(false);
+    } else if (errorMessageEmail === '') {  
+      setClickable(true);
     } else {
       setErrorMessagePass("");
-      setClickable(true);
     }
   }, [password]);
 
@@ -33,16 +35,22 @@ function RegisterForm() {
     if (!isValidEmail(email)) {
       setErrorMessageEmail("Please provide valid email address");
       setClickable(false);
-    } else {
-      setErrorMessageEmail("");
+    } else if (errorMessagePass === ''){ 
       setClickable(true);
+    } else {
+         setErrorMessageEmail("");
     }
   }, [email]);
+
   const handleRegistration = async () => {
     await store.registration(email, password, username);
     navigate("/questions");
   };
 
+  const handleLoginPlaceholder = () => {
+    store.login('user@gmail.com', '12345');
+    navigate("/");
+  };
   return (
     <form className="input__group">
      {errorMessageEmail == '' ?  <p></p> : <p className="error-message">{errorMessageEmail}</p>}
@@ -76,6 +84,12 @@ function RegisterForm() {
           Register
         </button>
       </Link>
+      <button
+        className="btn__startpage-light"
+        onClick={handleLoginPlaceholder}
+      >
+        See The Functionality
+      </button>
     </form>
   );
 }

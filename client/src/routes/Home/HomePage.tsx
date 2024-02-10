@@ -168,6 +168,11 @@ function HomePage() {
             visibleModal={visibleModal}
             setVisibleModal={setVisibleModal}
           />
+          <h3 className="smaller__title">
+            Your next menstruation dates: <span className="red">
+          {" "}{predictedPeriodDates[0].getDate()} {englishMonthNames[predictedPeriodDates[0].getMonth()].slice(0, 3)} - 
+          {" "}{predictedPeriodDates[predictedPeriodDates?.length - 1].getDate()} {englishMonthNames[predictedPeriodDates[predictedPeriodDates.length - 1].getMonth()].slice(0, 3)}
+          </span> </h3>
           <div className="phases__wrapper">
             <div className="menstrual__phase">
               <div className="phase__section">
