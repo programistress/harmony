@@ -1,4 +1,4 @@
-Harmony - period tracking app that predicts your next period dates and counts the cycle phases based on user input. Built using React + MobX for frontend and Node.js + MongoDB for backend.
+Harmony - period tracking app that predicts your next period dates and counts the cycle phases based on user input. Built using React + MobX for frontend and Node.js, MongoDB and Express for backend.
 
 Authentification using JWT(JSON Web Tokens) with email verification and input validation.
 <img width="1186" alt="Screenshot 2024-02-09 at 10 03 16 PM" src="https://github.com/zxck1tten/harmony/assets/116770408/a7b579ae-ed87-4249-9995-660b795010cf">
